@@ -22,13 +22,19 @@ public class MainMenu {
         //Display the title of the chosen module
         switch (choice) {
             case 1:
-                System.out.println("Plaats nieuwe order");
+                System.out.println("Welcome to the order screen");
+                PlaceOrder placeOrder = new PlaceOrder();
+                placeOrder.ShowOrderScreen();
                 break;
             case 2:
                 System.out.println("Menu van de dag");
+                MenuItems menuitems = new MenuItems();
+                menuitems.ShowFoodItems();
                 break;
             case 3:
                 System.out.println("Overzicht van geplaatste orders");
+                OrderHistory orderhistory = new OrderHistory();
+                orderhistory.ViewHistory();
                 break;
             default:
                 System.out.println("Verkeerde keuze, kies aub een der bovenstaande opties");
