@@ -13,7 +13,8 @@ public class MainMenu {
         System.out.println("1\t Order plaatsen");
         System.out.println("2\t Dagmenu bekijken");
         System.out.println("3\t Overzicht orders");
-        System.out.println("4\t Afsluiten");
+        System.out.println("4\t Overzicht klanten");
+        System.out.println("5\t Afsluiten");
 
 
         //Get user's choice
@@ -35,6 +36,11 @@ public class MainMenu {
                 System.out.println("Overzicht van geplaatste orders");
                 OrderHistory orderhistory = new OrderHistory();
                 orderhistory.ViewHistory();
+                break;
+            case 4:
+                System.out.println("Overzicht van klanten");
+               Klanten klanten = new Klanten();
+                klanten.showKlantenOverview();
                 break;
             default:
                 System.out.println("Verkeerde keuze, kies aub een der bovenstaande opties");
