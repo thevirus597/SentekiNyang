@@ -27,7 +27,7 @@ public class OrderRepository {
         }
     }
 
-    public List<Order> findAllRecords() {
+    public List<Order> findAllMeals() {
         List<Order> orderList = new ArrayList<Order>();
         Statement stmt = null;
         try {
@@ -51,13 +51,58 @@ public class OrderRepository {
         return orderList;
     }
 
-    public int insertOneRecord(Order order) {
+    public int insertNewMeal(Order order) {
         PreparedStatement stmt = null;
         int result = 0;
         try {
-            String sql = "insert into order (naam) values(?)";
+            String sql = "insert into order (klant_id,menu_id,levering_adres,levering_prijs) values(?,?,?,?)";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, order.getKlant_id());
+            stmt.setInt(2, order.getMenu_id());
+            stmt.setString(3, order.getLevering_adres());
+            stmt.setInt(4, order.getLevering_prijs());
+
+            result = stmt.executeUpdate();
+            System.out.println("resultset: " + result);
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+        return result;
+    }
+
+    public int updateMeal(Order order) {
+        PreparedStatement stmt = null;
+        int result = 0;
+        try {
+            String sql = "update orders set menu_id=? where order_id=?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, order.getMenu_id());
+            stmt.setInt(1, order.getMenu_id());
+
+
+
+            result = stmt.executeUpdate();
+            System.out.println("resultset: " + result);
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+        return result;
+    }
+
+    public int deleteMeal(Order order) {
+        PreparedStatement stmt = null;
+        int result = 0;
+        try {
+            String sql = "delete from orders where order_id=?";
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, order.getMenu_id());
+
             result = stmt.executeUpdate();
             System.out.println("resultset: " + result);
 
@@ -69,3 +114,4 @@ public class OrderRepository {
         return result;
     }
 }
+
