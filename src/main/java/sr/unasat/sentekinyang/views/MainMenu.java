@@ -13,7 +13,6 @@ public class MainMenu {
 
     public void showMainMenu() {
 
-
         System.out.println("--- WELKOM BIJ SENTEKINYANG ---");
         System.out.println("");
         Scanner in = new Scanner(System.in);
@@ -24,7 +23,8 @@ public class MainMenu {
         System.out.println("2\t Dagmenu bekijken");
         System.out.println("3\t Overzicht orders");
         System.out.println("4\t Overzicht klanten");
-        System.out.println("5\t Afsluiten");
+        System.out.println("5\t Mijn gegevens");
+        System.out.println("6\t Afsluiten");
 
 
         //Get user's choice
@@ -43,14 +43,19 @@ public class MainMenu {
                 menuitems.ShowFoodItems();
                 break;
             case 3:
-                System.out.println("Overzicht van geplaatste orders");
-                OrderHistory orderhistory = new OrderHistory();
+                System.out.println("Overzicht van mijn geplaatste orders");
+                OrderHistory orderhistory = new OrderHistory(loggedInUser);
                 orderhistory.ViewHistory();
                 break;
             case 4:
-                System.out.println("Overzicht van klanten");
+                System.out.println("Overzicht van alle klanten");
                 Klanten klanten = new Klanten();
                 klanten.showKlantenOverview();
+                break;
+            case 5:
+                System.out.println("Mijn gegevens");
+                UserInfo userInfo = new UserInfo(loggedInUser);
+                userInfo.showUserInfo();
                 break;
             default:
                 System.out.println("Verkeerde keuze, kies aub een der bovenstaande opties");

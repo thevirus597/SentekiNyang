@@ -31,7 +31,7 @@ public class Application {
             loggedInUser.setLoggedIn(true);
             mainmenu.showMainMenu();
         } else {
-            System.out.println("Login Error");
+            System.out.println("Credentials Incorrect!");
         }
     }
 }

@@ -12,13 +12,13 @@ public class KlantRepository {
     public KlantRepository() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("De driver is geregistreerd!");
+//            System.out.println("De driver is geregistreerd!");
 
-            String URL = "jdbc:mysql://localhost:3306/restaurant";
+            String URL = "jdbc:mysql://localhost:3306/restaurant?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             String USER = "root";
-            String PASS = "root";
+            String PASS = "";
             connection = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println(connection);
+//            System.out.println(connection);
         } catch (ClassNotFoundException ex) {
             System.out.println("Error: unable to load driver class!");
             System.exit(1);
@@ -37,11 +37,13 @@ public class KlantRepository {
             //STEP 5: Extract data from result set
             while (rs.next()) {
                 int klant_id = rs.getInt("klant_id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
                 String naam = rs.getString("naam");
                 String adres = rs.getString("adres");
                 String telefoon = rs.getString("telefoon");
 
-                klantList.add(new Klant(klant_id, naam, adres, telefoon));
+                klantList.add(new Klant(klant_id, username, password, naam, adres, telefoon));
             }
             rs.close();
         } catch (SQLException e) {
@@ -51,7 +53,7 @@ public class KlantRepository {
         return klantList;
     }
 
-    public Klant findUserByUsername(String username){
+    public Klant findUserByUsername(String username) {
         Klant klant = null;
         PreparedStatement stmt = null;
         String sql = "SELECT * FROM klant WHERE username = ? LIMIT 1";
@@ -59,33 +61,34 @@ public class KlantRepository {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            if (!rs.isBeforeFirst() ) {
+            if (!rs.isBeforeFirst()) {
                 System.out.println("No user with given info!");
-            }else{
+            } else {
                 rs.next();
 
                 klant = new Klant(rs.getInt("klant_id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
                         rs.getString("naam"),
                         rs.getString("adres"),
                         rs.getString("telefoon"));
             }
             rs.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
-                if(stmt != null){
+                if (stmt != null) {
                     stmt.close();
                 }
-            }catch (SQLException e){
+            } catch (SQLException e) {
 
             }
             try {
-                if(connection != null){
+                if (connection != null) {
                     stmt.close();
                 }
-            }catch (SQLException e){
+            } catch (SQLException e) {
 
             }
         }

@@ -12,13 +12,13 @@ public class OrderRepository {
     public OrderRepository() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("De driver is geregistreerd!");
+//            System.out.println("De driver is geregistreerd!");
 
-            String URL = "jdbc:mysql://localhost:3306/restaurant";
+            String URL = "jdbc:mysql://localhost:3306/restaurant?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             String USER = "root";
-            String PASS = "root";
+            String PASS = "";
             connection = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println(connection);
+//            System.out.println(connection);
         } catch (ClassNotFoundException ex) {
             System.out.println("Error: unable to load driver class!");
             System.exit(1);
@@ -42,6 +42,36 @@ public class OrderRepository {
                 String levering_adres = rs.getString("levering_adres");
                 int levering_prijs = rs.getInt("levering_prijs");
                 orderList.add(new Order(order_id, klant_id, menu_id, levering_adres, levering_prijs));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        }
+        return orderList;
+    }
+
+
+    public List<Order> findOrderByKlantId(int klant_id) {
+        List<Order> orderList = new ArrayList<Order>();
+        PreparedStatement stmt = null;
+        String sql = "SELECT * FROM orders WHERE klant_id = ?";
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, klant_id);
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("No user with given info!");
+            } else {
+                while (rs.next()) {
+                    orderList.add(
+                            new Order(rs.getInt("order_id"),
+                                    rs.getInt("klant_id"),
+                                    rs.getInt("menu_id"),
+                                    rs.getString("levering_adres"),
+                                    rs.getInt("levering_prijs"))
+                    );
+                }
             }
             rs.close();
         } catch (SQLException e) {
@@ -81,7 +111,6 @@ public class OrderRepository {
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, order.getMenu_id());
             stmt.setInt(1, order.getMenu_id());
-
 
 
             result = stmt.executeUpdate();

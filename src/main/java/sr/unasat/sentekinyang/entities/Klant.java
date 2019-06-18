@@ -2,6 +2,8 @@ package sr.unasat.sentekinyang.entities;
 
 public class Klant {
     private int klant_id;
+    private String username;
+    private String password;
     private String naam;
     private String adres;
     private boolean isLoggedIn = false;
@@ -10,8 +12,11 @@ public class Klant {
     public String toString() {
         return "Klant{" +
                 "klant_id=" + klant_id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", naam='" + naam + '\'' +
                 ", adres='" + adres + '\'' +
+                ", isLoggedIn=" + isLoggedIn +
                 ", telefoon='" + telefoon + '\'' +
                 '}';
     }
@@ -24,6 +29,22 @@ public class Klant {
 
     public void setKlant_id(int klant_id) {
         this.klant_id = klant_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNaam() {
@@ -58,8 +79,10 @@ public class Klant {
         isLoggedIn = loggedIn;
     }
 
-    public Klant(int klant_id, String naam, String adres, String telefoon) {
+    public Klant(int klant_id, String username, String password, String naam, String adres, String telefoon) {
         this.klant_id = klant_id;
+        this.username = username;
+        this.password = password;
         this.naam = naam;
         this.adres = adres;
         this.telefoon = telefoon;
