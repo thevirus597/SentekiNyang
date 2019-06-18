@@ -1,18 +1,15 @@
 package sr.unasat.sentekinyang.app;
+
 import java.util.*;
+
+import sr.unasat.sentekinyang.entities.Klant;
+import sr.unasat.sentekinyang.repositories.KlantRepository;
 import sr.unasat.sentekinyang.views.MainMenu;
 
 import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-//        OrderRepository orderRepository = new OrderRepository();
-//        List<Order> orderList = orderRepository.findAllRecords();
-//        for (Order order : orderList) {
-//            System.out.println(order);
-//        }
-//    }
-        MainMenu mainmenu = new MainMenu(); //MainMenu class declaratie
         Scanner input = new Scanner(System.in);
 
         String username;
@@ -26,10 +23,16 @@ public class Application {
         System.out.println("Password: ");
         password = input.next();
 
-        //user check = new users(username, password);
-        if(username.equals(username) && password.equals(password))
-            mainmenu.showMainMenu(); // toont Menu in de views package
-
+        KlantRepository klantRepository = new KlantRepository();
+        boolean isLoggedIn = klantRepository.login(username, password);
+        if (isLoggedIn) {
+            Klant loggedInUser = klantRepository.findUserByUsername(username);
+            MainMenu mainmenu = new MainMenu(loggedInUser);
+            loggedInUser.setLoggedIn(true);
+            mainmenu.showMainMenu();
+        } else {
+            System.out.println("Login Error");
+        }
     }
 }
 

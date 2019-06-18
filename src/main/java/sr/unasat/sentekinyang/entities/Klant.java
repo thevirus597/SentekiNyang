@@ -4,6 +4,7 @@ public class Klant {
     private int klant_id;
     private String naam;
     private String adres;
+    private boolean isLoggedIn = false;
 
     @Override
     public String toString() {
@@ -47,6 +48,14 @@ public class Klant {
 
     public void setTelefoon(String telefoon) {
         this.telefoon = telefoon;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 
     public Klant(int klant_id, String naam, String adres, String telefoon) {
