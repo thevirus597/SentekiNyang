@@ -1,17 +1,21 @@
 package sr.unasat.sentekinyang.views;
+
 import sr.unasat.sentekinyang.entities.Klant;
+
 import java.util.*;
+
+import sr.unasat.sentekinyang.repositories.KlantRepository;
 import sr.unasat.sentekinyang.repositories.OrderRepository;
 
 public class Klanten {
 
-public void showKlantenOverview(){
+    public void showKlantenOverview() {
 
-    OrderRepository orderRepository = new OrderRepository();
+        KlantRepository klantRepository = new KlantRepository();
 
-    List<Klant> klantList = orderRepository.findAllKlanten();
-      for (Klant klant : klantList) {
+        List<Klant> klantList = klantRepository.findAllKlanten();
+        for (Klant klant : klantList) {
             System.out.println(klant);
-       }
-}
+        }
+    }
 }
