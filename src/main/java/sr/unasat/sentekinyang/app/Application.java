@@ -10,28 +10,30 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        while () {
+            Scanner input = new Scanner(System.in);
 
-        String username;
-        String password;
+            String username;
+            String password;
 
-        System.out.println("---- LOG IN ----:");
-        System.out.println("");
-        System.out.println("Username: ");
-        username = input.next();
+            System.out.println("---- LOG IN ----:");
+            System.out.println("");
+            System.out.println("Username: ");
+            username = input.next();
 
-        System.out.println("Password: ");
-        password = input.next();
+            System.out.println("Password: ");
+            password = input.next();
 
-        KlantRepository klantRepository = new KlantRepository();
-        boolean isLoggedIn = klantRepository.login(username, password);
-        if (isLoggedIn) {
-            Klant loggedInUser = klantRepository.findUserByUsername(username);
-            MainMenu mainmenu = new MainMenu(loggedInUser);
-            loggedInUser.setLoggedIn(true);
-            mainmenu.showMainMenu();
-        } else {
-            System.out.println("Credentials Incorrect!");
+            KlantRepository klantRepository = new KlantRepository();
+            boolean isLoggedIn = klantRepository.login(username, password);
+            if (isLoggedIn) {
+                Klant loggedInUser = klantRepository.findUserByUsername(username);
+                MainMenu mainmenu = new MainMenu(loggedInUser);
+                loggedInUser.setLoggedIn(true);
+                mainmenu.showMainMenu();
+            } else {
+                System.out.println("Credentials Incorrect!");
+            }
         }
     }
 }
