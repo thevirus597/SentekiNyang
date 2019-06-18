@@ -53,4 +53,30 @@ public class MenuRepository {
         }
         return menuList;
     }
+
+
+    public Menu getSingleMenuByMenuId(int menu_id) {
+        Menu menu = null;
+        PreparedStatement stmt;
+        String sql = "SELECT * FROM menu WHERE menu_id = ? LIMIT 1";
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, menu_id);
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                System.out.println("No user with given info");
+            } else {
+                rs.next();
+                menu = new Menu(
+                        rs.getInt("menu_id"),
+                        rs.getInt("restaurant_id"),
+                        rs.getString("menu_naam"),
+                        rs.getInt("prijs"));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return menu;
+    }
 }

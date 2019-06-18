@@ -34,7 +34,7 @@ public class MainMenu {
         switch (choice) {
             case 1:
                 System.out.println("Welcome to the order screen");
-                PlaceOrder placeOrder = new PlaceOrder();
+                PlaceOrder placeOrder = new PlaceOrder(loggedInUser);
                 placeOrder.ShowOrderScreen();
                 break;
             case 2:

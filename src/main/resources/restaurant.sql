@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2019 at 03:38 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Jun 18, 2019 at 07:14 PM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,7 +42,8 @@ CREATE TABLE `klant` (
 --
 
 INSERT INTO `klant` (`klant_id`, `username`, `password`, `naam`, `adres`, `telefoon`) VALUES
-(1, 'viramdin', 'pass@123', 'Viresh Ramdin', 'Garnizoenspad 39', '8513301');
+(1, 'viramdin', 'pass@123', 'Viresh Ramdin', 'Garnizoenspad 39', '8513301'),
+(2, 'jfransman', 'pass@123', 'Jovin Fransman', 'Tawajarieweg', '123456789');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `klant_id`, `menu_id`, `levering_adres`, `levering_prijs`) VALUES
-(1, 1, 1, 'Garnizoenspad 39', 40);
+(1, 1, 1, 'Garnizoenspad 39', 40),
+(2, 2, 1, 'Thuis', 50),
+(3, 1, 1, 'homeee', 35);
 
 -- --------------------------------------------------------
 
@@ -144,7 +147,7 @@ ALTER TABLE `restaurant`
 -- AUTO_INCREMENT for table `klant`
 --
 ALTER TABLE `klant`
-  MODIFY `klant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `klant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -156,7 +159,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `restaurant`

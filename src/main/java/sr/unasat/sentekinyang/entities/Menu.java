@@ -31,6 +31,13 @@ public class Menu {
         this.prijs = prijs;
     }
 
+    public Menu(int menu_id, int restaurant_id, String menu_naam, int prijs) {
+        this.menu_id = menu_id;
+        this.restaurant_id = restaurant_id;
+        this.menu_naam = menu_naam;
+        this.prijs = prijs;
+    }
+
     public int getMenu_id() {
         return menu_id;
     }

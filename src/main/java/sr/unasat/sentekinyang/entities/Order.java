@@ -4,6 +4,10 @@ public class Order {
     private int order_id;
     private int klant_id;
     private int menu_id;
+    private String restaurant;
+    private String menu;
+    private String klant_naam;
+    private String klant_telefoon;
     private String levering_adres;
     private int levering_prijs;
 
@@ -11,11 +15,23 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "order_id=" + order_id +
-                ", klant_id=" + klant_id +
-                ", menu_id=" + menu_id +
+                ", restaurant='" + restaurant + '\'' +
+                ", menu='" + menu + '\'' +
+                ", klant_naam='" + klant_naam + '\'' +
+                ", klant_telefoon='" + klant_telefoon + '\'' +
                 ", levering_adres='" + levering_adres + '\'' +
                 ", levering_prijs=" + levering_prijs +
                 '}';
+    }
+
+    public Order(int order_id, String restaurant, String menu, String klant_naam, String klant_telefoon, String levering_adres, int levering_prijs) {
+        this.order_id = order_id;
+        this.restaurant = restaurant;
+        this.menu = menu;
+        this.klant_naam = klant_naam;
+        this.klant_telefoon = klant_telefoon;
+        this.levering_adres = levering_adres;
+        this.levering_prijs = levering_prijs;
     }
 
     public Order(int order_id, int klant_id, int menu_id, String levering_adres, int levering_prijs) {
