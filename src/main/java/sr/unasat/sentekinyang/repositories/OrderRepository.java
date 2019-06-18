@@ -16,7 +16,7 @@ public class OrderRepository {
 
             String URL = "jdbc:mysql://localhost:3306/restaurant";
             String USER = "root";
-            String PASS = "";
+            String PASS = "root";
             connection = DriverManager.getConnection(URL, USER, PASS);
             System.out.println(connection);
         } catch (ClassNotFoundException ex) {
@@ -55,7 +55,7 @@ public class OrderRepository {
         PreparedStatement stmt = null;
         int result = 0;
         try {
-            String sql = "insert into order (klant_id,menu_id,levering_adres,levering_prijs) values(?,?,?,?)";
+            String sql = "insert into order (klant.klant_id,menu.menu_id,levering_adres,levering_prijs) values(?,?,?,?)";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, order.getKlant_id());
             stmt.setInt(2, order.getMenu_id());

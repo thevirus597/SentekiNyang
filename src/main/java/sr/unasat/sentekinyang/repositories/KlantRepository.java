@@ -16,7 +16,7 @@ public class KlantRepository {
 
             String URL = "jdbc:mysql://localhost:3306/restaurant";
             String USER = "root";
-            String PASS = "";
+            String PASS = "root";
             connection = DriverManager.getConnection(URL, USER, PASS);
             System.out.println(connection);
         } catch (ClassNotFoundException ex) {
