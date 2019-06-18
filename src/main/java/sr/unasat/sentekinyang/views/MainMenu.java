@@ -1,7 +1,17 @@
 package sr.unasat.sentekinyang.views;
+
+import sr.unasat.sentekinyang.entities.Klant;
+
 import java.util.Scanner;
+
 public class MainMenu {
-    public void showMainMenu(){
+    private Klant loggedInUser;
+
+    public MainMenu(Klant loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
+    public void showMainMenu() {
 
 
         System.out.println("--- WELKOM BIJ SENTEKINYANG ---");
@@ -39,7 +49,7 @@ public class MainMenu {
                 break;
             case 4:
                 System.out.println("Overzicht van klanten");
-               Klanten klanten = new Klanten();
+                Klanten klanten = new Klanten();
                 klanten.showKlantenOverview();
                 break;
             default:
