@@ -108,7 +108,48 @@ public class OrderRepository {
         return orderList;
     }
 
-    public void insertNewMeal(int klant_id, int menu_id, String levering_adres) {
+    public Order findOrderByOrderId(int order_id) {
+        Order order = null;
+        PreparedStatement stmt = null;
+        String sql = "SELECT * FROM orders WHERE order_id = ?";
+
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, order_id);
+            ResultSet rs = stmt.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                return null;
+            } else {
+                rs.next();
+                order = new Order(
+                        rs.getInt("order_id"),
+                        rs.getInt("klant_id"),
+                        rs.getInt("menu_id"),
+                        rs.getString("levering_adres"),
+                        rs.getInt("levering_prijs"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (connection != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return order;
+    }
+
+    public void insertNewOrder(int klant_id, int menu_id, String levering_adres) {
         MenuRepository menuRepository = new MenuRepository();
         PreparedStatement stmt = null;
         try {
@@ -120,6 +161,7 @@ public class OrderRepository {
             stmt.setInt(4, menuRepository.getSingleMenuByMenuId(menu_id).getPrijs());
 
             stmt.executeUpdate();
+            System.out.println("Order succesvol geplaatst");
         } catch (SQLException e) {
             System.out.println(e);
         } finally {
@@ -127,28 +169,28 @@ public class OrderRepository {
         }
     }
 
-    public int updateMeal(Order order) {
+    public int updateOrder(Order order) {
         PreparedStatement stmt = null;
         int result = 0;
         try {
-            String sql = "update orders set menu_id=? where order_id=?";
+            String sql = "update orders set menu_id=?, levering_adres=?, levering_prijs=? where order_id=?";
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, order.getMenu_id());
-            stmt.setInt(1, order.getMenu_id());
-
+            stmt.setString(2, order.getLevering_adres());
+            stmt.setInt(3, order.getLevering_prijs());
+            stmt.setInt(4, order.getOrder_id());
 
             result = stmt.executeUpdate();
-//            System.out.println("resultset: " + result);
-
+            System.out.println("Order " + order.getOrder_id() + " succesvol geupdate");
         } catch (SQLException e) {
-
+            e.printStackTrace();
         } finally {
 
         }
         return result;
     }
 
-    public int deleteMeal(int menu_id) {
+    public int deleteOrder(int menu_id) {
         PreparedStatement stmt = null;
         int result = 0;
         try {
@@ -157,7 +199,7 @@ public class OrderRepository {
             stmt.setInt(1, menu_id);
 
             result = stmt.executeUpdate();
-//            System.out.println("resultset: " + result);
+            System.out.println("Order verwijdert");
 
         } catch (SQLException e) {
 
