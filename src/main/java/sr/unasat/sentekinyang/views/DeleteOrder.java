@@ -19,7 +19,7 @@ public class DeleteOrder {
 
         System.out.println("Vul de order_id die uw wilt verwijderen in: ");
         order_id = input.nextInt();
-        orderRepository.deleteMeal(order_id);
+        orderRepository.deleteOrder(order_id);
         System.out.println("Order " + order_id + " is verwijdert");
     }
 }

@@ -33,6 +33,6 @@ public class PlaceOrder {
 
         System.out.println("Vul de levering adres in: ");
         levering_adres = input.next();
-        orderRepository.insertNewMeal(loggedInUser.getKlant_id(), menu_id, levering_adres);
+        orderRepository.insertNewOrder(loggedInUser.getKlant_id(), menu_id, levering_adres);
     }
 }
