@@ -15,7 +15,6 @@ public class Klant {
                 ", password='" + password + '\'' +
                 ", naam='" + naam + '\'' +
                 ", adres='" + adres + '\'' +
-                ", isLoggedIn=" + isLoggedIn +
                 ", telefoon='" + telefoon;
     }
 
