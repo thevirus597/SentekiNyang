@@ -69,22 +69,34 @@ public class OrderRepository {
     public List<Order> findOrderByKlantId(int klant_id) {
         List<Order> orderList = new ArrayList<Order>();
         PreparedStatement stmt = null;
-        String sql = "SELECT * FROM orders WHERE klant_id = ?";
+        String sql = "SELECT orders.order_id AS ordernummer,\n" +
+                "restaurant.restaurant_naam AS restaurant, \n" +
+                "menu_naam AS menu,\n" +
+                "klant.naam,\n" +
+                "klant.telefoon,\n" +
+                "orders.levering_adres,\n" +
+                "orders.levering_prijs AS prijs\n" +
+                "FROM orders\n" +
+                "INNER JOIN klant ON orders.klant_id=klant.klant_id\n" +
+                "INNER JOIN menu ON orders.menu_id = menu.menu_id\n" +
+                "INNER JOIN restaurant ON menu.restaurant_id=restaurant.restaurant_id WHERE orders.klant_id = ?";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, klant_id);
             ResultSet rs = stmt.executeQuery();
             if (!rs.isBeforeFirst()) {
-                System.out.println("No user with given info!");
+                System.out.println("error");
             } else {
                 while (rs.next()) {
                     orderList.add(
                             new Order(
-                                    rs.getInt("order_id"),
-                                    rs.getInt("klant_id"),
-                                    rs.getInt("menu_id"),
+                                    rs.getInt("ordernummer"),
+                                    rs.getString("restaurant"),
+                                    rs.getString("menu"),
+                                    rs.getString("naam"),
+                                    rs.getString("telefoon"),
                                     rs.getString("levering_adres"),
-                                    rs.getInt("levering_prijs"))
+                                    rs.getInt("prijs"))
                     );
                 }
             }
@@ -126,7 +138,7 @@ public class OrderRepository {
 
 
             result = stmt.executeUpdate();
-            System.out.println("resultset: " + result);
+//            System.out.println("resultset: " + result);
 
         } catch (SQLException e) {
 
@@ -136,16 +148,16 @@ public class OrderRepository {
         return result;
     }
 
-    public int deleteMeal(Order order) {
+    public int deleteMeal(int menu_id) {
         PreparedStatement stmt = null;
         int result = 0;
         try {
             String sql = "delete from orders where order_id=?";
             stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, order.getMenu_id());
+            stmt.setInt(1, menu_id);
 
             result = stmt.executeUpdate();
-            System.out.println("resultset: " + result);
+//            System.out.println("resultset: " + result);
 
         } catch (SQLException e) {
 

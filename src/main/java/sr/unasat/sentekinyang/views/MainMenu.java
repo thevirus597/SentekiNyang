@@ -21,10 +21,13 @@ public class MainMenu {
         System.out.println("");
         System.out.println("1\t Order plaatsen");
         System.out.println("2\t Dagmenu bekijken");
-        System.out.println("3\t Overzicht orders");
-        System.out.println("4\t Overzicht klanten");
-        System.out.println("5\t Mijn gegevens");
-        System.out.println("6\t Afsluiten");
+        System.out.println("3\t Overzicht van mijn orders");
+        System.out.println("4\t Update mijn orders");
+        System.out.println("5\t Verwijder mijn order");
+        System.out.println("6\t Overzicht van alle orders");
+        System.out.println("7\t Overzicht van alle klanten");
+        System.out.println("8\t Mijn gegevens");
+        System.out.println("9\t Afsluiten");
 
 
         //Get user's choice
@@ -48,11 +51,26 @@ public class MainMenu {
                 orderhistory.ViewHistory();
                 break;
             case 4:
+                System.out.println("Update mijn orders");
+//                Klanten klanten = new Klanten();
+//                klanten.showKlantenOverview();
+                break;
+            case 5:
+                System.out.println("Verwijder order");
+                DeleteOrder deleteOrder = new DeleteOrder();
+                deleteOrder.deleteOrderView();
+                break;
+            case 6:
+                System.out.println("Overzicht van alle order");
+//                Klanten klanten = new Klanten();
+//                klanten.showKlantenOverview();
+                break;
+            case 7:
                 System.out.println("Overzicht van alle klanten");
                 Klanten klanten = new Klanten();
                 klanten.showKlantenOverview();
                 break;
-            case 5:
+            case 8:
                 System.out.println("Mijn gegevens");
                 UserInfo userInfo = new UserInfo(loggedInUser);
                 userInfo.showUserInfo();

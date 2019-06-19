@@ -13,15 +13,13 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "order_id=" + order_id +
+        return "order_id=" + order_id +
                 ", restaurant='" + restaurant + '\'' +
                 ", menu='" + menu + '\'' +
                 ", klant_naam='" + klant_naam + '\'' +
                 ", klant_telefoon='" + klant_telefoon + '\'' +
                 ", levering_adres='" + levering_adres + '\'' +
-                ", levering_prijs=" + levering_prijs +
-                '}';
+                ", levering_prijs=" + levering_prijs;
     }
 
     public Order(int order_id, String restaurant, String menu, String klant_naam, String klant_telefoon, String levering_adres, int levering_prijs) {

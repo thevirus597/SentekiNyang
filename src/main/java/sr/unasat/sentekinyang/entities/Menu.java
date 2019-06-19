@@ -11,14 +11,12 @@ public class Menu {
 
     @Override
     public String toString() {
-        return "Menu{" +
-                "menu_id=" + menu_id +
+        return "menu_id=" + menu_id +
                 ", menu_naam='" + menu_naam + '\'' +
                 ", restaurant_naam='" + restaurant_naam + '\'' +
                 ", restaurant_adres='" + restaurant_adres + '\'' +
                 ", restaurant_telefoon='" + restaurant_telefoon + '\'' +
-                ", prijs=" + prijs +
-                '}';
+                ", prijs=" + prijs;
     }
 
     public Menu(int menu_id, int restaurant_id, String menu_naam, String restaurant_naam, String restaurant_adres, String restaurant_telefoon, int prijs) {

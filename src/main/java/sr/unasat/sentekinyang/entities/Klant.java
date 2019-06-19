@@ -10,15 +10,13 @@ public class Klant {
 
     @Override
     public String toString() {
-        return "Klant{" +
-                "klant_id=" + klant_id +
+        return "klant_id=" + klant_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", naam='" + naam + '\'' +
                 ", adres='" + adres + '\'' +
                 ", isLoggedIn=" + isLoggedIn +
-                ", telefoon='" + telefoon + '\'' +
-                '}';
+                ", telefoon='" + telefoon;
     }
 
     private String telefoon;
