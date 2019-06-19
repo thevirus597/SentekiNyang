@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class UpdateOrder {
     private Klant loggedInUser;
+    char resume;
 
     public void updateOrderView() {
         Scanner input = new Scanner(System.in);
@@ -35,7 +36,13 @@ public class UpdateOrder {
         orderToUpdate.setLevering_prijs(menuRepository.getSingleMenuByMenuId(orderToUpdate.getMenu_id()).getPrijs());
         orderRepository.updateOrder(orderToUpdate);
 
-        MainMenu mainmenu = new MainMenu(loggedInUser);
-        mainmenu.showMainMenu();
+
+        System.out.println("Wilt u verder gaan? (Y/N) ");
+        resume = input.next().charAt(0);
+
+        if (resume == 'y' || resume == 'Y') {
+            MainMenu mainmenu = new MainMenu(loggedInUser);
+            mainmenu.showMainMenu();
+        }
     }
 }

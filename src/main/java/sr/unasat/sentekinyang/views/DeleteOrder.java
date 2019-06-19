@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class DeleteOrder {
     private Klant loggedInUser;
+    char resume;
 
     public void deleteOrderView() {
         Scanner input = new Scanner(System.in);
@@ -25,7 +26,13 @@ public class DeleteOrder {
         orderRepository.deleteOrder(order_id);
         System.out.println("Order " + order_id + " is verwijdert");
 
-        MainMenu mainmenu = new MainMenu(loggedInUser);
-        mainmenu.showMainMenu();
+
+        System.out.println("Wilt u verder gaan? (Y/N) ");
+        resume = input.next().charAt(0);
+
+        if (resume == 'y' || resume == 'Y') {
+            MainMenu mainmenu = new MainMenu(loggedInUser);
+            mainmenu.showMainMenu();
+        }
     }
 }

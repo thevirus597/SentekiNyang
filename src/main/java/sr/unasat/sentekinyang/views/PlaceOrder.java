@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class PlaceOrder {
     private Klant loggedInUser;
-
+char resume;
     public PlaceOrder(Klant loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
@@ -35,8 +35,15 @@ public class PlaceOrder {
         levering_adres = input.next();
         orderRepository.insertNewOrder(loggedInUser.getKlant_id(), menu_id, levering_adres);
 
-        MainMenu mainmenu = new MainMenu(loggedInUser);
-        mainmenu.showMainMenu();
+
+        System.out.println("Wilt u verder gaan? (Y/N) ");
+        resume = input.next().charAt(0);
+
+        if (resume == 'y' || resume == 'Y') {
+            MainMenu mainmenu = new MainMenu(loggedInUser);
+            mainmenu.showMainMenu();
+        }
+
 
     }
 }
