@@ -24,10 +24,9 @@ public class MainMenu {
         System.out.println("3\t Overzicht van mijn orders");
         System.out.println("4\t Update mijn orders");
         System.out.println("5\t Verwijder mijn order");
-        System.out.println("6\t Overzicht van alle orders");
-        System.out.println("7\t Overzicht van alle klanten");
-        System.out.println("8\t Mijn gegevens");
-        System.out.println("9\t Afsluiten");
+        System.out.println("6\t Overzicht van alle klanten");
+        System.out.println("7\t Mijn gegevens");
+        System.out.println("8\t Afsluiten");
 
 
         //Get user's choice
@@ -52,8 +51,8 @@ public class MainMenu {
                 break;
             case 4:
                 System.out.println("Update mijn orders");
-//                Klanten klanten = new Klanten();
-//                klanten.showKlantenOverview();
+                UpdateOrder updateOrder = new UpdateOrder();
+                updateOrder.updateOrderView();
                 break;
             case 5:
                 System.out.println("Verwijder order");
@@ -61,16 +60,11 @@ public class MainMenu {
                 deleteOrder.deleteOrderView();
                 break;
             case 6:
-                System.out.println("Overzicht van alle order");
-//                Klanten klanten = new Klanten();
-//                klanten.showKlantenOverview();
-                break;
-            case 7:
                 System.out.println("Overzicht van alle klanten");
                 Klanten klanten = new Klanten();
                 klanten.showKlantenOverview();
                 break;
-            case 8:
+            case 7:
                 System.out.println("Mijn gegevens");
                 UserInfo userInfo = new UserInfo(loggedInUser);
                 userInfo.showUserInfo();
