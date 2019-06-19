@@ -70,7 +70,7 @@ public class MainMenu {
                 userInfo.showUserInfo();
                 break;
             default:
-                System.out.println("Verkeerde keuze, kies aub een der bovenstaande opties");
+                System.out.println("Applicatie succesvol gestopt");
         }//end of switch
     }
 }

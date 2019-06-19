@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2019 at 07:14 PM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Generation Time: Jun 20, 2019 at 12:16 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,9 @@ CREATE TABLE `klant` (
 
 INSERT INTO `klant` (`klant_id`, `username`, `password`, `naam`, `adres`, `telefoon`) VALUES
 (1, 'viramdin', 'pass@123', 'Viresh Ramdin', 'Garnizoenspad 39', '8513301'),
-(2, 'jfransman', 'pass@123', 'Jovin Fransman', 'Tawajarieweg', '123456789');
+(2, 'jfransman', 'pass@123', 'Jovin Fransman', 'Tawajarieweg', '123456789'),
+(3, 'ftroenodrono', 'pass@123', 'Farah Troenodrono', 'Weg Naar Zee', '123456789'),
+(4, 'dlowtoe', 'pass@123', 'Devina Lowtoe', 'Suriname', '123456789');
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,12 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`menu_id`, `restaurant_id`, `menu_naam`, `prijs`) VALUES
-(1, 1, 'Nasi Kip', 35);
+(1, 1, 'Nasi Kip', 35),
+(2, 1, 'Tjauwmin KIp', 40),
+(3, 3, '2pcs meal', 30),
+(4, 3, '3pcs meal', 45),
+(5, 2, '3pcs Tender', 30),
+(6, 2, '5pcs Tender', 52);
 
 -- --------------------------------------------------------
 
@@ -84,9 +91,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `klant_id`, `menu_id`, `levering_adres`, `levering_prijs`) VALUES
-(1, 1, 1, 'Garnizoenspad 39', 40),
-(2, 2, 1, 'Thuis', 50),
-(3, 1, 1, 'homeee', 35);
+(1, 1, 1, 'Kwattaweg', 35),
+(2, 2, 1, 'Suriname', 35);
 
 -- --------------------------------------------------------
 
@@ -106,7 +112,9 @@ CREATE TABLE `restaurant` (
 --
 
 INSERT INTO `restaurant` (`restaurant_id`, `restaurant_naam`, `restaurant_adres`, `restaurant_telefoon`) VALUES
-(1, 'Chi Min', 'Anton Drachtenweg', '123456');
+(1, 'Chi Min', 'Anton Drachtenweg', '123456'),
+(2, 'Popeyes', 'Hermitagemall', '123456789'),
+(3, 'Mac Donald', 'Hermitagemall', '123456789');
 
 --
 -- Indexes for dumped tables
@@ -147,25 +155,25 @@ ALTER TABLE `restaurant`
 -- AUTO_INCREMENT for table `klant`
 --
 ALTER TABLE `klant`
-  MODIFY `klant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `klant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `restaurant`
 --
 ALTER TABLE `restaurant`
-  MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
