@@ -16,7 +16,7 @@ public class OrderRepository {
 
             String URL = "jdbc:mysql://localhost:3306/restaurant?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             String USER = "root";
-            String PASS = "root";
+            String PASS = "";
             connection = DriverManager.getConnection(URL, USER, PASS);
 //            System.out.println(connection);
         } catch (ClassNotFoundException ex) {
