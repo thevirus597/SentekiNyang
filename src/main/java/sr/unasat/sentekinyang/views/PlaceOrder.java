@@ -34,5 +34,9 @@ public class PlaceOrder {
         System.out.println("Vul de levering adres in: ");
         levering_adres = input.next();
         orderRepository.insertNewOrder(loggedInUser.getKlant_id(), menu_id, levering_adres);
+
+        MainMenu mainmenu = new MainMenu(loggedInUser);
+        mainmenu.showMainMenu();
+
     }
 }

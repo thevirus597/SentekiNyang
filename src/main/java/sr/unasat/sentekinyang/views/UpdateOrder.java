@@ -1,5 +1,6 @@
 package sr.unasat.sentekinyang.views;
 
+import sr.unasat.sentekinyang.entities.Klant;
 import sr.unasat.sentekinyang.entities.Menu;
 import sr.unasat.sentekinyang.entities.Order;
 import sr.unasat.sentekinyang.repositories.MenuRepository;
@@ -9,6 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UpdateOrder {
+    private Klant loggedInUser;
+
     public void updateOrderView() {
         Scanner input = new Scanner(System.in);
         int order_id;
@@ -31,5 +34,8 @@ public class UpdateOrder {
         orderToUpdate.setLevering_adres(input.next());
         orderToUpdate.setLevering_prijs(menuRepository.getSingleMenuByMenuId(orderToUpdate.getMenu_id()).getPrijs());
         orderRepository.updateOrder(orderToUpdate);
+
+        MainMenu mainmenu = new MainMenu(loggedInUser);
+        mainmenu.showMainMenu();
     }
 }

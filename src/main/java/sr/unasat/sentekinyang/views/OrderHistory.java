@@ -4,6 +4,7 @@ import sr.unasat.sentekinyang.entities.Klant;
 import sr.unasat.sentekinyang.entities.Order;
 import sr.unasat.sentekinyang.repositories.OrderRepository;
 
+
 import java.util.List;
 
 public class OrderHistory {
@@ -21,5 +22,8 @@ public class OrderHistory {
         for (Order order : orderList) {
             System.out.println(order);
         }
+        MainMenu mainmenu = new MainMenu(loggedInUser);
+        mainmenu.showMainMenu();
     }
+
 }
