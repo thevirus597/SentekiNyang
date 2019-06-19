@@ -64,7 +64,7 @@ public class MenuRepository {
             stmt.setInt(1, menu_id);
             ResultSet rs = stmt.executeQuery();
             if (!rs.isBeforeFirst()) {
-                System.out.println("No user with given info");
+                System.out.println("Geen bestelling gevonden");
             } else {
                 rs.next();
                 menu = new Menu(
