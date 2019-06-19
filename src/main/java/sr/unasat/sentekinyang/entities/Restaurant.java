@@ -6,12 +6,10 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "restaurant_id=" + restaurant_id +
+        return "restaurant_id = " + restaurant_id +
                 ", restaurant_naam='" + restaurant_naam + '\'' +
                 ", restaurant_adres='" + restaurant_adres + '\'' +
-                ", restaurant_telefoon='" + restaurant_telefoon + '\'' +
-                '}';
+                ", restaurant_telefoon='" + restaurant_telefoon;
     }
 
     private String restaurant_adres;
