@@ -13,6 +13,10 @@ public class UpdateOrder {
     private Klant loggedInUser;
     char resume;
 
+    public UpdateOrder(Klant loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     public void updateOrderView() {
         Scanner input = new Scanner(System.in);
         int order_id;

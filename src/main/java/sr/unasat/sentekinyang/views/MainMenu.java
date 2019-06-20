@@ -41,7 +41,7 @@ public class MainMenu {
                 break;
             case 2:
                 System.out.println("Menu van de dag");
-                MenuItems menuitems = new MenuItems();
+                MenuItems menuitems = new MenuItems(loggedInUser);
                 menuitems.ShowFoodItems();
                 break;
             case 3:
@@ -51,17 +51,17 @@ public class MainMenu {
                 break;
             case 4:
                 System.out.println("Update mijn orders");
-                UpdateOrder updateOrder = new UpdateOrder();
+                UpdateOrder updateOrder = new UpdateOrder(loggedInUser);
                 updateOrder.updateOrderView();
                 break;
             case 5:
                 System.out.println("Verwijder order");
-                DeleteOrder deleteOrder = new DeleteOrder();
+                DeleteOrder deleteOrder = new DeleteOrder(loggedInUser);
                 deleteOrder.deleteOrderView();
                 break;
             case 6:
                 System.out.println("Overzicht van alle klanten");
-                Klanten klanten = new Klanten();
+                Klanten klanten = new Klanten(loggedInUser);
                 klanten.showKlantenOverview();
                 break;
             case 7:

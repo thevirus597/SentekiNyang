@@ -11,6 +11,10 @@ public class DeleteOrder {
     private Klant loggedInUser;
     char resume;
 
+    public DeleteOrder(Klant loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     public void deleteOrderView() {
         Scanner input = new Scanner(System.in);
         int order_id;

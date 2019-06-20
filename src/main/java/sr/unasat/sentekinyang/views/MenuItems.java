@@ -12,6 +12,11 @@ import java.util.Scanner;
 public class MenuItems {
     Klant loggedInUser;
     char resume;
+
+    public MenuItems(Klant loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     Scanner input = new Scanner(System.in);
 
     public void ShowFoodItems() {

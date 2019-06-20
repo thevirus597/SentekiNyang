@@ -11,6 +11,11 @@ import sr.unasat.sentekinyang.repositories.OrderRepository;
 public class Klanten {
     private Klant loggedInUser;
     char resume;
+
+    public Klanten(Klant loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+
     public void showKlantenOverview() {
         Scanner input = new Scanner(System.in);
 
@@ -19,15 +24,14 @@ public class Klanten {
         List<Klant> klantList = klantRepository.findAllKlanten();
         for (Klant klant : klantList) {
             System.out.println(klant);
-            System.out.println("Wilt u verder gaan? (Y/N) ");
-            resume = input.next().charAt(0);
-
-            if (resume == 'y' || resume == 'Y') {
-                MainMenu mainmenu = new MainMenu(loggedInUser);
-                mainmenu.showMainMenu();
-            }
         }
+        System.out.println("Wilt u verder gaan? (Y/N) ");
+        resume = input.next().charAt(0);
 
+        if (resume == 'y' || resume == 'Y') {
+            MainMenu mainmenu = new MainMenu(loggedInUser);
+            mainmenu.showMainMenu();
+        }
     }
 
 }

@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class PlaceOrder {
     private Klant loggedInUser;
-char resume;
+    char resume;
+
     public PlaceOrder(Klant loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
